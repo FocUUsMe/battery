@@ -37,12 +37,6 @@
             batteryDischime.innerHTML = `${battery.dischargingTime} minutes`
             bProgress.style.height = `${battery.level * 100}%`;
 
-            if(battery.charging == true){
-                batteryCharging.innerHTML = 'Your device is charging';
-            }else{
-                batteryCharging.innerHTML = 'Your device is not charging';
-            }
-
 
             battery.addEventListener('levelChange', ()=>{
                 bProgress.style.height = `${battery.level * 100}%`;
@@ -53,10 +47,12 @@
 
                 if(battery.charging == false){
                     clearInterval(interval);
+                    batteryCharging.innerHTML = 'Your device is not charging';
                 }else{
                     interval = setInterval(()=>{
                         createBubble();
                     }, 500);
+                    batteryCharging.innerHTML = 'Your device is charging';
                 }
             });
         })
