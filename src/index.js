@@ -47,13 +47,13 @@
             battery.addEventListener('levelChange', ()=>{
                 bProgress.style.height = `${battery.level * 100}%`;
 
-                if(battery.level <= 25){
+                if(battery.level <= 0.25){
                     bProgress.style.backgroundColor = 'orangered';
-                }else if(battery.level <= 50 & battery.level >= 25){
+                }else if(battery.level <= 0.50 & battery.level >= 0.25){
                     bProgress.style.backgroundColor = 'yellow';
-                }else if(battery.level <= 75 & battery.level >= 50){
+                }else if(battery.level <= 0.75 & battery.level >= 0.50){
                     bProgress.style.backgroundColor = 'yellowgreen';
-                }else if(battery.level <= 100 & battery.level >= 75){
+                }else if(battery.level <= 1 & battery.level >= 0.75){
                     bProgress.style.bakcgroundColor = 'green';
                 }
             });
