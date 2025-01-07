@@ -34,17 +34,31 @@
             console.log(battery);
             batteryLvl.innerHTML = `${battery.level *  100}%`;
             batteryChime.innerHTML = `${battery.chargingTime} minutes`;
-            batteryDischime.innerHTML = `${battery.dischargingTime} minutes`;
-            batteryCharging.innerHTML = `${battery.charging}`;
+            batteryDischime.innerHTML = `${battery.dischargingTime} minutes`
             bProgress.style.height = `${battery.level * 100}%`;
+
+            if(battery.charging == true){
+                batteryCharging.innerHTML = 'Your device is charging';
+            }else{
+                batteryCharging.innerHTML = 'Your device is not charging';
+            }
 
 
             battery.addEventListener('levelChange', ()=>{
                 bProgress.style.height = `${battery.level * 100}%`;
+
+                if(battery.level <= 25){
+                    bProgress.style.backgroundColor = 'orangered';
+                }else if(battery.level <= 50 & battery.level >= 25){
+                    bProgress.style.backgroundColor = 'yellow';
+                }else if(battery.level <= 75 & battery.level >= 50){
+                    bProgress.style.backgroundColor = 'yellowgreen';
+                }else if(battery.level <= 100 & battery.level >= 75){
+                    bProgress.style.bakcgroundColor = 'green';
+                }
             });
 
             battery.addEventListener('chargingchange', ()=>{
-                alert('Состояние зарядки вашего устройства изменено');
                 batteryCharging.innerHTML = `${battery.charging}`;
 
                 if(battery.charging == false){

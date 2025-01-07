@@ -52,7 +52,8 @@
     .battery_progress{
         width: 100%;
         height: 6%;
-        background-color: rgba(255, 68, 0, 0.5);
+        background-color: green;
+        opacity: 0.5;
     }
 
     .bubble_container{
@@ -67,7 +68,7 @@
         left: 50%;
         border-radius: 50%;
         background-color: green;
-        animation: bubble 3s 1 forwards;
+        animation: bubble 1.5s 1 forwards;
     }
 
     .battery_stats{
@@ -93,12 +94,47 @@
             transform: translateY(0vh); 
             opacity: 1;
         }
-        50%{
-            transform: translateY(-30vh); 
-            opacity: 1;
-        }
         100%{
+            transform: translateY(-45vh); 
+            opacity: 0;
+        }
+        /* 100%{
             transform: translateY(-100vh);
             opacity: 0.1;
+        } */
+    }
+
+    /*Media*/
+
+    @media (max-width: 500px){
+        .battery_stats{
+            width: 150px;
+            height: 300px;
+            font-size: 10px;
+            left: 10px;
+            top: 10px;
+        }
+
+        .battery_head{
+            margin-top: 160px;
+        }
+
+        .bubble{
+            animation: phoneBubble 1s 1 forwards;
+        }
+
+        @keyframes phoneBubble{
+            0%{
+                transform: translateY(0vh); 
+                opacity: 1;
+            }
+            100%{
+                transform: translateY(-30vh); 
+                opacity: 0;
+            }
+            /* 100%{
+                transform: translateY(-100vh);
+                opacity: 0.1;
+            } */
         }
     }
